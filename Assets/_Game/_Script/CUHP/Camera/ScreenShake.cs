@@ -3,6 +3,7 @@ using System.Collections;
 
 public class ScreenShake : MonoBehaviour
 {
+    private Vector3 offset = new Vector3(0, 0, -10);
     public IEnumerator Shake(float duration, float magnitude)
     {
         Vector3 originalPos = transform.localPosition;
@@ -20,7 +21,7 @@ public class ScreenShake : MonoBehaviour
 
             yield return null;
         }
-
-        transform.localPosition = originalPos;
+       
+        transform.localPosition = offset;
     }
 }

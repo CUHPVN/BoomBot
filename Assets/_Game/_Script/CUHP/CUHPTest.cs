@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class CUHPTest : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
+    public float duration=0.5f;
+    public float magnitude=0.5f;
+    public ScreenShake screenShake;
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Space)){
+            StartCoroutine(screenShake.Shake(duration,magnitude));
+        }
     }
 }
