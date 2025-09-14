@@ -10,7 +10,7 @@ public class CUHPTest : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space)){
-            StartCoroutine(screenShake.Shake(duration,magnitude));
+            StartCoroutine(screenShake.Shake());
         }
     }
 }
