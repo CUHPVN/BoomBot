@@ -6,6 +6,7 @@ public class CreateLine : MonoBehaviour
 {
     [SerializeField] private LineRenderer _lineRenderer;
     [SerializeField] private InputManager _inputManager;
+    [SerializeField] private float MaxForce = 2.0f;
     void Start()
     {
         _lineRenderer.gameObject.SetActive(false);
@@ -25,9 +26,9 @@ public class CreateLine : MonoBehaviour
             {
                 if(!_lineRenderer.gameObject.activeSelf) _lineRenderer.gameObject.SetActive(true);
                 Vector2 currentPoint = _inputManager._currentPoint;
-                if (_inputManager.GetDistance() > 2f)
+                if (_inputManager.GetDistance() > MaxForce)
                 {
-                    currentPoint = (currentPoint-_inputManager._startPoint).normalized*2f+_inputManager._startPoint;
+                    currentPoint = (currentPoint-_inputManager._startPoint).normalized * MaxForce + _inputManager._startPoint;
                 }
                 _lineRenderer.SetPosition(0, _inputManager._startPoint);
                 _lineRenderer.SetPosition(1, currentPoint);

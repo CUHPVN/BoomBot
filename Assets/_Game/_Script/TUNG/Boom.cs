@@ -6,7 +6,9 @@ public class Boom : MonoBehaviour
     [Header("Explosion Settings")]
     [SerializeField] private float explosionForce = 20f;   // lực đẩy
     [SerializeField] private float explosionRadius = 5f;   // bán kính nổ
-    [SerializeField] private string wallTag = "Wall";      // tag tường
+    //[SerializeField] private string wallTag = "Wall";
+    //[SerializeField] private string slideFloor = "SlideFloor";
+ 
     
     private Rigidbody2D rb;         // RB của chính Boom
     private Rigidbody2D playerRb;   // RB của Player (tìm theo tag)
@@ -37,7 +39,7 @@ public class Boom : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         // Boom chạm tường -> nổ
-        if (other.CompareTag(wallTag))
+        if (other.CompareTag("Wall"))
         {
             Explode();
         }
