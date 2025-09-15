@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 3782572947953115976}
   - component: {fileID: 8368117814228389600}
   - component: {fileID: 2070192989653129330}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Ice
-  m_TagString: Ice
+  m_TagString: DontHaveRig
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -6,8 +6,9 @@ TagManager:
   tags:
   - Wall
   - SlideFloor
-  - Ice
   - Interact
+  - HaveRig
+  - DontHaveRig
   layers:
   - Default
   - TransparentFX

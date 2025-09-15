@@ -44,10 +44,10 @@ public class Boom : MonoBehaviour
         {
             Explode();
         }
-        if(other.CompareTag("Ice"))
+        if(other.CompareTag("DontHaveRig"))
         {
             Explode();
-            other.gameObject.SetActive(false);
+            //other.gameObject.SetActive(false);
         }
     }
 
@@ -60,6 +60,11 @@ public class Boom : MonoBehaviour
 
         foreach (Collider2D col in colliders)
         {
+            if(col.CompareTag("DontHaveRig"))
+            {
+                col.gameObject.SetActive(false);
+                continue;
+            }
             Rigidbody2D colRb = col.GetComponent<Rigidbody2D>();
             if (colRb != null)
             {
