@@ -43,6 +43,11 @@ public class Boom : MonoBehaviour
         {
             Explode();
         }
+        if(other.CompareTag("Ice"))
+        {
+            Explode();
+            other.gameObject.SetActive(false);
+        }
     }
 
     private void Explode()
