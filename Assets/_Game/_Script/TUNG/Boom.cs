@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
@@ -6,6 +7,7 @@ public class Boom : MonoBehaviour
     [Header("Explosion Settings")]
     [SerializeField] private float explosionForce = 20f;   // lực đẩy
     [SerializeField] private float explosionRadius = 5f;   // bán kính nổ
+    [SerializeField] private LayerMask layerName;
     //[SerializeField] private string wallTag = "Wall";
     //[SerializeField] private string slideFloor = "SlideFloor";
  
@@ -34,12 +36,11 @@ public class Boom : MonoBehaviour
     }
     
     public Rigidbody2D GetBoomRb() => rb;
-    
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         // Boom chạm tường -> nổ
-        if (other.CompareTag("Wall"))
+        if (other.CompareTag("Wall") || other.CompareTag("Interact"))
         {
             Explode();
         }
@@ -50,25 +51,33 @@ public class Boom : MonoBehaviour
         }
     }
 
+
     private void Explode()
     {
-        if (playerRb != null)
-        {
-            Vector2 dir = (playerRb.worldCenterOfMass - (Vector2)transform.position);
-            float dist = dir.magnitude;
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, explosionRadius, layerName);
 
-            // Chỉ đẩy nếu Player trong bán kính nổ
-            if (dist <= explosionRadius)
+        //int targetLayer = LayerMask.NameToLayer(layerName);
+
+        foreach (Collider2D col in colliders)
+        {
+            Rigidbody2D colRb = col.GetComponent<Rigidbody2D>();
+            if (colRb != null)
             {
-                // Giảm lực theo khoảng cách (gần nổ mạnh hơn)
-                float atten = 1f - (dist / Mathf.Max(0.0001f, explosionRadius));
-                playerRb.AddForce(dir.normalized * explosionForce * (atten * 0.7f + 0.3f), ForceMode2D.Impulse);
+                Vector2 dir = (colRb.worldCenterOfMass - (Vector2)transform.position);
+                float dist = dir.magnitude;
+
+                // Chỉ đẩy nếu Player trong bán kính nổ
+                if (dist <= explosionRadius)
+                {
+                    // Giảm lực theo khoảng cách (gần nổ mạnh hơn)
+                    float atten = 1f - (dist / Mathf.Max(0.0001f, explosionRadius));
+                    colRb.AddForce(dir.normalized * explosionForce * (atten * 0.7f + 0.3f), ForceMode2D.Impulse);
+                }
             }
         }
-
         // TODO: spawn hiệu ứng nổ (particle, sound) nếu muốn
 
-        Destroy(gameObject); // hủy boom sau khi nổ
+        Destroy(gameObject);
     }
 
     // Vẽ radius để debug trong Editor
