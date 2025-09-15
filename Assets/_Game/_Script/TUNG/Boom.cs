@@ -40,14 +40,9 @@ public class Boom : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         // Boom chạm tường -> nổ
-        if (other.CompareTag("Wall") || other.CompareTag("Interact"))
+        if (other.CompareTag("Wall") || other.CompareTag("Interact") || other.CompareTag("DontHaveRig") || other.CompareTag("HaveRig"))
         {
             Explode();
-        }
-        if(other.CompareTag("DontHaveRig"))
-        {
-            Explode();
-            //other.gameObject.SetActive(false);
         }
     }
 
