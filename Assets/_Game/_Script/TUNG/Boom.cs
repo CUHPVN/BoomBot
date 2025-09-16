@@ -48,7 +48,6 @@ public class Boom : MonoBehaviour
         if (other.CompareTag("Interact"))
         {
             Explode();
-            other.GetComponent<IInteractable>().OnInteract();
         }
         if (other.CompareTag("DontHaveRig"))
         {
@@ -80,6 +79,11 @@ public class Boom : MonoBehaviour
             if (col.CompareTag("Bomb"))
             {
                 col.GetComponent<Boom>().CallExplode();
+                continue;
+            }
+            if (col.CompareTag("Interact"))
+            {
+                col.GetComponent<IInteractable>().OnInteract();
                 continue;
             }
             Rigidbody2D colRb = col.GetComponent<Rigidbody2D>();
