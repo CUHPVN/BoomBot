@@ -5,50 +5,58 @@ using UnityEngine;
 public class Elevator : MonoBehaviour
 {
     [SerializeField] private float height = 10f;
-    [SerializeField] private float upped = 999f;
-    [SerializeField] private float speed = 1;
-    private int dir = -1;
+    [SerializeField] private float speed = 2f;   // tốc độ thật (unit/second)
+
+    private float moved = 0f;   // đã đi được bao xa
+    private int dir = 0;        // hướng (0 = đứng yên, 1 = lên, -1 = xuống)
+
+    private Rigidbody2D rb;
+    private Vector3 startPoint;
     private Vector3 endPoint;
-    // Start is called before the first frame update
+
     void Start()
     {
-        upped = 0;
+        rb = GetComponent<Rigidbody2D>();
+        startPoint = transform.position;
         endPoint = transform.position + new Vector3(0, height, 0);
-        speed *= Time.deltaTime;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (upped < height && upped > 0)
+        // Nếu đang di chuyển
+        if (dir != 0)
         {
-            transform.Translate(new Vector3(0, speed * dir, 0));
-            upped += speed * dir;
+            rb.velocity = new Vector2(0, dir * speed);
+
+            moved += Time.deltaTime * speed * dir;
+
+            // Giới hạn trong [0, height]
+            if (moved >= height)
+            {
+                moved = height;
+                rb.velocity = Vector2.zero;
+                dir = 0;
+            }
+            else if (moved <= 0)
+            {
+                moved = 0;
+                rb.velocity = Vector2.zero;
+                dir = 0;
+            }
         }
+        else
+        {
+            rb.velocity = Vector2.zero;
+        }
+    }
+
+    public void Trigger()
+    {
+        if (moved <= 0f) dir = 1;        // đi lên
+        else if (moved >= height) dir = -1; // đi xuống
     }
     void OnDrawGizmos()
     {
         Gizmos.DrawLine(transform.position, endPoint);
     }
-    public void Trigger()
-    {
-        dir = -dir;
-        if (upped <= 0f) upped = 0.01f;
-        else if (upped >= height) upped = height - 0.01f;
-    }
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (!collision.transform.CompareTag("Wall"))
-        {
-            collision.transform.SetParent(transform);
-        }
-    }
-    void OnCollisionExit2D(Collision2D collision)
-    {
-        if (!collision.transform.CompareTag("Wall"))
-        {
-            collision.transform.SetParent(GameParent.Instance.transform);
-        }
-    }
 }
-
