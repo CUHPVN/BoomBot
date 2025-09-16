@@ -304,12 +304,12 @@ GameObject:
   - component: {fileID: 7059348405355746492}
   - component: {fileID: 1868829059208177139}
   - component: {fileID: 446555789386878118}
-  - component: {fileID: 7174425092022076326}
   - component: {fileID: 7457071859815124537}
   - component: {fileID: 201856530959936958}
   - component: {fileID: 721970742552944842}
   - component: {fileID: 3851126054769107443}
   - component: {fileID: 777170503382594791}
+  - component: {fileID: 3296005149411409272}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -428,25 +428,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputManager: {fileID: 0}
   ropeSwing: {fileID: 721970742552944842}
---- !u!114 &7174425092022076326
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8949694982612722734}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5ae230a71c9bfd4db5148324e259afa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 7658038854820110677, guid: 8e70a64ed9d85404fa002334681b4dd1, type: 3}
-  shootPoint: {fileID: 949514982360660271}
-  power: 8
-  playerRb: {fileID: 1868829059208177139}
-  playerTf: {fileID: 949514982360660271}
-  _playerControler: {fileID: 446555789386878118}
-  _linerShoot: {fileID: 7457071859815124537}
 --- !u!114 &7457071859815124537
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -460,7 +441,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Linears: {fileID: 3354214852931577790}
-  _playerControler: {fileID: 446555789386878118}
 --- !u!114 &201856530959936958
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -474,7 +454,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lineRenderer: {fileID: 5153422774021152263}
-  _playerControler: {fileID: 446555789386878118}
   MaxForce: 2
 --- !u!114 &721970742552944842
 MonoBehaviour:
@@ -564,3 +543,21 @@ HingeJoint2D:
   m_AngleLimits:
     m_LowerAngle: 0
     m_UpperAngle: 359
+--- !u!114 &3296005149411409272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8949694982612722734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5ae230a71c9bfd4db5148324e259afa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 7658038854820110677, guid: 8e70a64ed9d85404fa002334681b4dd1, type: 3}
+  shootPoint: {fileID: 949514982360660271}
+  power: 10
+  playerRb: {fileID: 1868829059208177139}
+  playerTf: {fileID: 949514982360660271}
+  _linerShoot: {fileID: 7457071859815124537}

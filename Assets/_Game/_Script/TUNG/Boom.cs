@@ -83,9 +83,7 @@ public class Boom : MonoBehaviour
             }
             if (col.CompareTag("Bomb"))
             {
-                BoomPro bpr = col.GetComponent<BoomPro>();
                 Boom b = col.GetComponent<Boom>();
-                if (bpr != null) bpr.CallExplode();
                 if (b != null) b.CallExplode();
 
                 continue;

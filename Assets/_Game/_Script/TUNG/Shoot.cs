@@ -4,8 +4,6 @@ using UnityEngine;
 public class Shoot : MonoBehaviour
 {
     [SerializeField] private Boom bulletPrefab;
-    [SerializeField] private BoomPro proBulletPrefab;
-    bool isPro;
     [SerializeField] private Transform shootPoint;
     [SerializeField] private float power = 10f;
     [SerializeField] private Rigidbody2D playerRb;  
@@ -27,17 +25,13 @@ public class Shoot : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            isPro = !isPro;
-        }
+        
         if (_inputManager.inputState == InputManager.InputState.EndClick)
             {
                 Vector2 direction = _inputManager._endPoint - _inputManager._startPoint;
             if (direction.magnitude > 0.3f)
             {
-                if (!isPro)
-                {
+               
                     Boom boom = Instantiate(bulletPrefab, shootPoint.position, Quaternion.identity);
                     // Bắn boom đi
                     boom.SetPlayerRB(playerRb);
@@ -47,18 +41,7 @@ public class Shoot : MonoBehaviour
                         direction = direction.normalized * max;
                     boomRb.AddForce(direction * power, ForceMode2D.Impulse);
                 }
-                else
-                {
-                    BoomPro boom = Instantiate(proBulletPrefab, shootPoint.position, Quaternion.identity);
-                    // Bắn boom đi
-                    boom.SetPlayerRB(playerRb);
-                    boom.SetPlayerTF(playerTf);
-                    Rigidbody2D boomRb = boom.GetBoomRb();
-                    if (direction.magnitude > max)
-                        direction = direction.normalized * max;
-                    boomRb.AddForce(direction * power, ForceMode2D.Impulse);
-                }
-                }
+                
             }
 
         // if (inputManager.inputState == InputManager.InputState.OnClick)
