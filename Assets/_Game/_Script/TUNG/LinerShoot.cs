@@ -5,11 +5,17 @@ using UnityEngine;
 public class LinerShoot : MonoBehaviour
 {
     [SerializeField] Transform Linears;
-    [SerializeField] InputManager _inputManager;
+    private PlayerController _playerControler;
+    private InputManager _inputManager;
 
+    private void Awake()
+    {
+        _playerControler = GetComponent<PlayerController>();
+    }
     void Start()
     {
         Linears.gameObject.SetActive(false);
+        _inputManager = _playerControler.inputManager;
     }
     void Update()
     {
