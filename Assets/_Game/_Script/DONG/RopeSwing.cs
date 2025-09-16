@@ -30,7 +30,7 @@ public class RopeSwing : MonoBehaviour
             hingeJoint2D.autoConfigureConnectedAnchor = false; // để anchor tự khớp với Rigidbody2D kia
 
             hingeJoint2D.connectedAnchor = Vector2.zero; // điểm neo trên world
-            hingeJoint2D.anchor = Vector2.zero; // điểm bám trên Player (cánh tay)
+            hingeJoint2D.anchor =new Vector2(0f,0.5f); // điểm bám trên Player (cánh tay)
             hingeJoint2D.enableCollision = false; // không va chạm với anchor
            // rb.gravityScale = 1f; // Player vẫn chịu trọng lực
         }
@@ -41,6 +41,7 @@ public class RopeSwing : MonoBehaviour
         if (hingeJoint2D != null)
         {
             hingeJoint2D.enabled = false;
+            
         }
     }
 
