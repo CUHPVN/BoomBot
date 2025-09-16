@@ -1,28 +1,33 @@
 using UnityEngine;
 
-public class DragShoot : MonoBehaviour
+public class Shoot : MonoBehaviour
 {
     [SerializeField] private Boom bulletPrefab;
     [SerializeField] private Transform shootPoint;
     [SerializeField] private float power = 10f;
     [SerializeField] private Rigidbody2D playerRb;  
     [SerializeField] private Transform playerTf;
-    [SerializeField] private InputManager inputManager ;
+    private PlayerController _playerControler;
+    private InputManager _inputManager ;
     [SerializeField] private LinerShoot _linerShoot;
     
     private float max = 2.0f;
-    
+
     private void Awake()
     {
-        
+        _playerControler = GetComponent<PlayerController>();
+    }
+    private void Start()
+    {
+        _inputManager = _playerControler.inputManager;
     }
 
     private void Update()
     {
 
-        if (inputManager.inputState == InputManager.InputState.EndClick)
+        if (_inputManager.inputState == InputManager.InputState.EndClick)
         {
-            Vector2 direction = inputManager._endPoint - inputManager._startPoint;
+            Vector2 direction = _inputManager._endPoint - _inputManager._startPoint;
             if (direction.magnitude > 0.3f)
             {
                 Boom boom = Instantiate(bulletPrefab, shootPoint.position, Quaternion.identity);

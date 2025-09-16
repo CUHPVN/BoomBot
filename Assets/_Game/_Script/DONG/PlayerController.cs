@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public RopeSwing leftHand;
-    // Start is called before the first frame update
-    void Start()
+    public InputManager inputManager;
+    public RopeSwing ropeSwing;
+    void Awake()
     {
-        
+        inputManager = FindFirstObjectByType<InputManager>();
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         

@@ -90,7 +90,7 @@ public class Rope : MonoBehaviour
         {
             Spin();
             spinable = true;
-            rsw = collision.GetComponent<PlayerController>().leftHand;
+            rsw = collision.GetComponent<PlayerController>().ropeSwing;
             player = collision.GetComponent<Rigidbody2D>();
             rsw.ropeAnchor = transform;
             rsw.AttachToRope();

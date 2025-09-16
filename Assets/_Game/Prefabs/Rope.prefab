@@ -109,14 +109,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5426345627593445319}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: -0.39073113, w: 0.92050487}
+  m_LocalRotation: {x: 0, y: -0, z: 0.39073122, w: -0.92050487}
   m_LocalPosition: {x: 0.56, y: 0.33, z: 0.00043546612}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3052879958860802051}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 307.02}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 314}
 --- !u!1 &8769734811630594781
 GameObject:
   m_ObjectHideFlags: 0
@@ -204,7 +204,7 @@ MonoBehaviour:
   spinSpeed: 100
   angleSpined: 999
   spinAngle: 0
-  rounds: 2
+  rounds: 0
   rsw: {fileID: 0}
   forceVec: {x: 0, y: 0, z: 0}
   force: 400

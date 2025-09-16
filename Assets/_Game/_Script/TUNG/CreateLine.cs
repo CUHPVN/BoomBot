@@ -5,11 +5,17 @@ using UnityEngine;
 public class CreateLine : MonoBehaviour
 {
     [SerializeField] private LineRenderer _lineRenderer;
-    [SerializeField] private InputManager _inputManager;
+    private PlayerController _playerControler;
+    private InputManager _inputManager;
     [SerializeField] private float MaxForce = 2.0f;
+    private void Awake()
+    {
+        _playerControler = GetComponent<PlayerController>();
+    }
     void Start()
     {
         _lineRenderer.gameObject.SetActive(false);
+        _inputManager = _playerControler.inputManager;
     }
 
     // Update is called once per frame
