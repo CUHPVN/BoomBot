@@ -24,7 +24,7 @@ public class PoolAmount
 public enum PoolType
 {
     None=0,
-    Cauldren=1,
-    Ingredient=2,
-    QueueIngredient=3,
+    VFX=1,
+    Bomb=2,
+    SFX=3,
 }

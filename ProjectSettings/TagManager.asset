@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - Wall
+  - SlideFloor
+  - Interact
+  - HaveRig
+  - DontHaveRig
+  - Bomb
   layers:
   - Default
   - TransparentFX
@@ -13,8 +18,8 @@ TagManager:
   - Water
   - UI
   - Wall
-  - 
-  - 
+  - Interact
+  - Distort
   - 
   - 
   - 
@@ -41,4 +46,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Camera
+    uniqueID: 3498205465
     locked: 0
