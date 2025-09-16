@@ -22,13 +22,13 @@ public class Elevator : MonoBehaviour
     {
         if (upped < height && upped > 0)
         {
-            transform.Translate(new Vector3(0, speed*dir, 0));
-            upped+=speed*dir;
+            transform.Translate(new Vector3(0, speed * dir, 0));
+            upped += speed * dir;
         }
     }
     void OnDrawGizmos()
     {
-        Gizmos.DrawLine(transform.position,endPoint);
+        Gizmos.DrawLine(transform.position, endPoint);
     }
     public void Trigger()
     {
@@ -36,4 +36,19 @@ public class Elevator : MonoBehaviour
         if (upped <= 0f) upped = 0.01f;
         else if (upped >= height) upped = height - 0.01f;
     }
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (!collision.transform.CompareTag("Wall"))
+        {
+            collision.transform.SetParent(transform);
+        }
+    }
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        if (!collision.transform.CompareTag("Wall"))
+        {
+            collision.transform.SetParent(GameParent.Instance.transform);
+        }
+    }
 }
+

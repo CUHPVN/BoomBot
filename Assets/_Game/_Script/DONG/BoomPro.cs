@@ -2,7 +2,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
-public class Boom : MonoBehaviour
+public class BoomPro : MonoBehaviour
 {
     [Header("Explosion Settings")]
     [SerializeField] private float explosionForce = 20f;   // lực đẩy
@@ -11,8 +11,8 @@ public class Boom : MonoBehaviour
     bool isExplo = false;
     //[SerializeField] private string wallTag = "Wall";
     //[SerializeField] private string slideFloor = "SlideFloor";
- 
-    
+
+    private bool canExplode = false;
     private Rigidbody2D rb;         // RB của chính Boom
     private Rigidbody2D playerRb;   // RB của Player (tìm theo tag)
     private Transform playerTf;
@@ -43,20 +43,27 @@ public class Boom : MonoBehaviour
         // Boom chạm tường -> nổ
         if (other.CompareTag("Wall") || other.CompareTag("Bomb"))
         {
-            Explode();
+            if (canExplode || other.CompareTag("Bomb")) Explode();
         }
         if (other.CompareTag("Interact"))
         {
-            Explode();
+            if (canExplode) Explode();
         }
         if (other.CompareTag("DontHaveRig"))
         {
-            Explode();
+            if (canExplode) Explode();
             //other.gameObject.SetActive(false);
+        }
+        if (!canExplode && !other.CompareTag("Player"))
+        {
+            rb.isKinematic = true;
+            rb.velocity = Vector3.zero;
+             canExplode = true;
         }
     }
     public void CallExplode()
     {
+        Debug.Log("fjurng");
         if (isExplo) return;
         Explode();
     }
@@ -82,7 +89,6 @@ public class Boom : MonoBehaviour
                 Boom b = col.GetComponent<Boom>();
                 if (bpr != null) bpr.CallExplode();
                 if (b != null) b.CallExplode();
-
                 continue;
             }
             if (col.CompareTag("Interact"))
