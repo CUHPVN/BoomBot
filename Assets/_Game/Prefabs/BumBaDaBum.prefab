@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 8521623393106859252}
   - component: {fileID: 2119794483784636641}
   - component: {fileID: 7658038854820110677}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BumBaDaBum
-  m_TagString: Untagged
+  m_TagString: Bomb
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

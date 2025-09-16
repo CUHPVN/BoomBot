@@ -8,6 +8,7 @@ public class Boom : MonoBehaviour
     [SerializeField] private float explosionForce = 20f;   // lực đẩy
     [SerializeField] private float explosionRadius = 5f;   // bán kính nổ
     [SerializeField] private LayerMask layerName;
+    bool isExplo = false;
     //[SerializeField] private string wallTag = "Wall";
     //[SerializeField] private string slideFloor = "SlideFloor";
  
@@ -40,7 +41,7 @@ public class Boom : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         // Boom chạm tường -> nổ
-        if (other.CompareTag("Wall") || other.CompareTag("Interact"))
+        if (other.CompareTag("Wall") || other.CompareTag("Bomb")|| other.CompareTag("Interact"))
         {
             Explode();
         }
@@ -50,10 +51,16 @@ public class Boom : MonoBehaviour
             //other.gameObject.SetActive(false);
         }
     }
+    public void CallExplode()
+    {
+        if (isExplo) return;
+        Explode();
+    }
 
 
     private void Explode()
     {
+        isExplo = true;
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, explosionRadius, layerName);
 
         //int targetLayer = LayerMask.NameToLayer(layerName);
@@ -63,6 +70,11 @@ public class Boom : MonoBehaviour
             if(col.CompareTag("DontHaveRig"))
             {
                 col.gameObject.SetActive(false);
+                continue;
+            }
+            if (col.CompareTag("Bomb"))
+            {
+                col.GetComponent<Boom>().CallExplode();
                 continue;
             }
             Rigidbody2D colRb = col.GetComponent<Rigidbody2D>();
@@ -80,6 +92,7 @@ public class Boom : MonoBehaviour
                 }
             }
         }
+        SimplePool.Spawn<VFXPrefab>(PoolType.VFX, transform.position, Quaternion.identity);
         // TODO: spawn hiệu ứng nổ (particle, sound) nếu muốn
 
         Destroy(gameObject);
