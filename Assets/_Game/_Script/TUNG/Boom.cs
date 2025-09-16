@@ -54,6 +54,11 @@ public class Boom : MonoBehaviour
             Explode();
             //other.gameObject.SetActive(false);
         }
+        if (other.CompareTag("HaveRig"))
+        {
+            Explode();
+            //other.gameObject.SetActive(false);
+        }
     }
     public void CallExplode()
     {
