@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class Elevator : MonoBehaviour,IInteractByButton
+public class Elevator_Horizontal : MonoBehaviour,IInteractByButton
 {
-    [SerializeField] private float height = 10f; //height dương nếu đi lên trên, âm nếu đi xuống dưới (lần Trigger đầu)
+    [SerializeField] private float height = 10f; //height dương nếu đi sang phải, âm nếu đi sang trái (lần Trigger đầu)
     [SerializeField] private float speed = 2f;   // tốc độ thật (unit/second)
 
     private float moved = 0f;   // đã đi được bao xa
@@ -16,7 +16,7 @@ public class Elevator : MonoBehaviour,IInteractByButton
     {
         rb = GetComponent<Rigidbody2D>();
         startPoint = transform.position;
-        endPoint = transform.position + new Vector3(0, height, 0);
+        endPoint = transform.position + new Vector3(height, 0, 0);
         moved = (height > 0) ? 0 : -height;
         height = Mathf.Abs(height);
     }
@@ -26,7 +26,7 @@ public class Elevator : MonoBehaviour,IInteractByButton
         // Nếu đang di chuyển
         if (dir != 0)
         {
-            rb.velocity = new Vector2(0, dir * speed);
+            rb.velocity = new Vector2(dir * speed, 0);
 
             moved += Time.deltaTime * speed * dir;
 

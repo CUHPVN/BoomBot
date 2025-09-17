@@ -22,6 +22,7 @@ public class Rope : MonoBehaviour
     private Rigidbody2D player;
     private bool spinable = false;
     private float stringLen = 5f;
+    private bool swinged = false;
 
     // Start is called before the first frame update
     void Start()
@@ -41,7 +42,7 @@ public class Rope : MonoBehaviour
     }
     void FixedUpdate()
     {
-        if (spinable)
+        if (spinable && !swinged)
         {
             float spin = spinSpeed * Time.deltaTime;
             pivot.transform.Rotate(new Vector3(0f, 0f, spin));
@@ -74,8 +75,8 @@ public class Rope : MonoBehaviour
     {
         spinAngle = endAngle - startAngle + rounds * 360f;
         angleSpined = 0f;
-    }  
-  void exitRope()
+    }
+    void exitRope()
     {
         forceVec = (Vector3)transform.position - (Vector3)pivot.position;
         float t = forceVec.x;
@@ -83,10 +84,11 @@ public class Rope : MonoBehaviour
         forceVec.y = t;
         player.AddForce(forceVec * force);
         spinable = false;
+        swinged = true;
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (!swinged && collision.CompareTag("Player"))
         {
             Spin();
             spinable = true;

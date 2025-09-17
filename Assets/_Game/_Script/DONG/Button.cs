@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Button : MonoBehaviour,IBombInteractable, IPlayerInteractable
 {
-    [SerializeField] private Elevator elevator;
+    [SerializeField] private GameObject calledByButton;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,7 +18,7 @@ public class Button : MonoBehaviour,IBombInteractable, IPlayerInteractable
     }
     public void OnBombInteract()
     {
-        elevator.Trigger();
+         calledByButton.gameObject.GetComponent<IInteractByButton>().ButtonCall();
     }
 
     public void OnPlayerInteract()
