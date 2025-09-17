@@ -1,11 +1,13 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.Rendering;
 
-public class ScreenShake : MonoBehaviour
+public class ScreenShake : Singleton<ScreenShake>
 {
     private Vector3 offset = new Vector3(0, 0, -10);
     private float duration = 0.1f;
     private float magnitude = 0.05f;
+    [SerializeField] private GameObject volume;
     public IEnumerator Shake()
     {
         Vector3 originalPos = transform.localPosition;
@@ -25,6 +27,17 @@ public class ScreenShake : MonoBehaviour
         }
 
         transform.localPosition = offset;
+    }
+    public void StartShake()
+    {
+        StartCoroutine(Shake());
+        StartCoroutine(Volume());
+    }
+    public IEnumerator Volume()
+    {
+        volume.SetActive(true);
+        yield return new WaitForSeconds(0.1f);
+        volume.SetActive(false);
     }
     public IEnumerator ShakeWithConfig(float duration, float magnitude)
     {

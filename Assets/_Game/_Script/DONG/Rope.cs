@@ -1,10 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Security.Principal;
-using Unity.Mathematics;
-using Unity.VisualScripting;
-using UnityEditor;
-using UnityEditor.ShaderGraph;
 using UnityEngine;
 public class Rope : MonoBehaviour
 {
