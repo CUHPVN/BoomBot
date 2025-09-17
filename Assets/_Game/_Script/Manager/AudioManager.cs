@@ -9,7 +9,6 @@ public class AudioManager : PersistentSingleton<AudioManager>
     [SerializeField] private AudioClip[] sfxClips;
     [SerializeField, Range(0, 1)] private float bgmVolume = 0.5f;
     [SerializeField, Range(0, 1)] private float sfxVolume = 0.5f;
-    private bool saved = true;
     void Start()
     {
 
