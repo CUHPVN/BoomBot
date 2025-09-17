@@ -9,6 +9,7 @@ TagManager:
   - HaveRig
   - DontHaveRig
   - Bomb
+  - Anchor
   layers:
   - Default
   - TransparentFX
@@ -19,7 +20,7 @@ TagManager:
   - Wall
   - Interact
   - Distort
-  - 
+  - Anchor
   - 
   - 
   - 

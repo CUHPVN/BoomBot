@@ -85,7 +85,6 @@ public class Boom : MonoBehaviour
             {
                 Boom b = col.GetComponent<Boom>();
                 if (b != null) b.CallExplode();
-
                 continue;
             }
             if (col.CompareTag("Interact"))
@@ -102,6 +101,7 @@ public class Boom : MonoBehaviour
                 // Chỉ đẩy nếu Player trong bán kính nổ
                 if (dist <= explosionRadius)
                 {
+                    Debug.Log("Boom " + name + " " + col.name);
                     // Giảm lực theo khoảng cách (gần nổ mạnh hơn)
                     float atten = 1f - (dist / Mathf.Max(0.0001f, explosionRadius));
                     colRb.AddForce(dir.normalized * explosionForce * (atten * 0.7f + 0.3f), ForceMode2D.Impulse);
