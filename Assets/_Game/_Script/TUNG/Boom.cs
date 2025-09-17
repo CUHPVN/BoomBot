@@ -43,20 +43,20 @@ public class Boom : MonoBehaviour
         // Boom chạm tường -> nổ
         if (other.CompareTag("Wall") || other.CompareTag("Bomb"))
         {
-            Explode();
+            CallExplode();
         }
         if (other.CompareTag("Interact"))
         {
-            Explode();
+            CallExplode();
         }
         if (other.CompareTag("DontHaveRig"))
         {
-            Explode();
+            CallExplode();
             //other.gameObject.SetActive(false);
         }
         if (other.CompareTag("HaveRig"))
         {
-            Explode();
+            CallExplode();
             //other.gameObject.SetActive(false);
         }
     }
@@ -71,7 +71,7 @@ public class Boom : MonoBehaviour
     {
         isExplo = true;
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, explosionRadius, layerName);
-
+        Debug.Log("BOOOM!!!");
         //int targetLayer = LayerMask.NameToLayer(layerName);
 
         foreach (Collider2D col in colliders)
