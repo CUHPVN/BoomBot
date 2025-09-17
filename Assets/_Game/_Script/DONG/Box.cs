@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Box : MonoBehaviour, IInteractable
+public class Box : MonoBehaviour, IBombInteractable
 {
-    public void OnInteract()
+    public void OnBombInteract()
     {
         
     }

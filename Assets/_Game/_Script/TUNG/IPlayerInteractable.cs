@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IInteractable
+public interface IPlayerInteractable
 {
-    public void OnInteract();
+    public void OnPlayerInteract();
 }

@@ -2,7 +2,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
-public class Boom : MonoBehaviour
+public class Bomb : MonoBehaviour
 {
     [Header("Explosion Settings")]
     [SerializeField] private float explosionForce = 20f;   // lực đẩy
@@ -41,23 +41,9 @@ public class Boom : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         // Boom chạm tường -> nổ
-        if (other.CompareTag("Wall") || other.CompareTag("Bomb"))
+        if (other.CompareTag("Wall") || other.CompareTag("Bomb") || (other.CompareTag("Interact")) || other.CompareTag("DontHaveRig") || other.CompareTag("HaveRig"))
         {
             CallExplode();
-        }
-        if (other.CompareTag("Interact"))
-        {
-            CallExplode();
-        }
-        if (other.CompareTag("DontHaveRig"))
-        {
-            CallExplode();
-            //other.gameObject.SetActive(false);
-        }
-        if (other.CompareTag("HaveRig"))
-        {
-            CallExplode();
-            //other.gameObject.SetActive(false);
         }
     }
     public void CallExplode()
@@ -71,7 +57,7 @@ public class Boom : MonoBehaviour
     {
         isExplo = true;
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, explosionRadius, layerName);
-        Debug.Log("BOOOM!!!");
+        //Debug.Log("BOOOM!!!");
         //int targetLayer = LayerMask.NameToLayer(layerName);
 
         foreach (Collider2D col in colliders)
@@ -83,14 +69,14 @@ public class Boom : MonoBehaviour
             }
             if (col.CompareTag("Bomb"))
             {
-                Boom b = col.GetComponent<Boom>();
+                Bomb b = col.GetComponent<Bomb>();
                 if (b != null) b.CallExplode();
 
                 continue;
             }
             if (col.CompareTag("Interact"))
             {
-                col.GetComponent<IInteractable>().OnInteract();
+                col.GetComponent<IBombInteractable>().OnBombInteract();
                 continue;
             }
             Rigidbody2D colRb = col.GetComponent<Rigidbody2D>();
