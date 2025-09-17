@@ -454,7 +454,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lineRenderer: {fileID: 5153422774021152263}
-  MaxForce: 2
+  MaxForce: 3
 --- !u!114 &721970742552944842
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -534,7 +534,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0.5}
-  m_ConnectedAnchor: {x: -4.01, y: -3.06}
+  m_ConnectedAnchor: {x: 15.5, y: 1.11}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -557,7 +557,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 7658038854820110677, guid: 8e70a64ed9d85404fa002334681b4dd1, type: 3}
   shootPoint: {fileID: 949514982360660271}
-  power: 10
+  power: 20
   playerRb: {fileID: 1868829059208177139}
   playerTf: {fileID: 949514982360660271}
   _linerShoot: {fileID: 7457071859815124537}
+  maxLine: 3
