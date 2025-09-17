@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Button : MonoBehaviour,IInteractable
+public class Button : MonoBehaviour,IBombInteractable, IPlayerInteractable
 {
     [SerializeField] private Elevator elevator;
     // Start is called before the first frame update
@@ -16,8 +16,13 @@ public class Button : MonoBehaviour,IInteractable
     {
 
     }
-    public void OnInteract()
+    public void OnBombInteract()
     {
         elevator.Trigger();
+    }
+
+    public void OnPlayerInteract()
+    {
+        
     }
 }

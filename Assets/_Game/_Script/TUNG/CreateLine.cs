@@ -7,7 +7,7 @@ public class CreateLine : MonoBehaviour
     [SerializeField] private LineRenderer _lineRenderer;
     private PlayerController _playerControler;
     private InputManager _inputManager;
-    [SerializeField] private float MaxForce = 2.0f;
+    [SerializeField] private float MaxForce = 3.0f;
     private void Awake()
     {
         _playerControler = GetComponent<PlayerController>();
