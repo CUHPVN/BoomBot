@@ -5,6 +5,12 @@ using UnityEngine;
 public class NextLevel : MonoBehaviour
 {
     [SerializeField] private GameObject thisPlayer;
+    [SerializeField] private Vector3 startPoint;
+
+    private void Start()
+    {
+        startPoint = new Vector3(thisPlayer.transform.position.x, thisPlayer.transform.position.y, thisPlayer.transform.position.z);
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.CompareTag("Player"))
@@ -19,6 +25,6 @@ public class NextLevel : MonoBehaviour
     private void Respawn()
     {
         thisPlayer.SetActive(true);
-        thisPlayer.transform.position = Vector3.zero;
+        thisPlayer.transform.position = startPoint;
     }
 }
