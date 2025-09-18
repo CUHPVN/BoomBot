@@ -21,6 +21,7 @@ public class Rope : MonoBehaviour
     void Start()
     {
         cl = GetComponent<CircleCollider2D>();
+        
     }
 
     // Update is called once per frame
