@@ -18,13 +18,14 @@ public class NextLevel : MonoBehaviour
             //TO DO
             collision.gameObject.SetActive(false);
             thisPlayer = collision.gameObject;
-            Invoke(nameof(Respawn), 0.01f);
+            RhythmManager.Instance.StartPlayQueue();
+
+            Invoke(nameof(Respawn), 10);
         }
     }
 
     private void Respawn()
     {
-        RhythmManager.Instance.StartPlayQueue();
         thisPlayer.SetActive(true);
         thisPlayer.transform.position = startPoint;
     }

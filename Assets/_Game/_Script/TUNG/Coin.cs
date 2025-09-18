@@ -6,17 +6,21 @@ public class Coin : MonoBehaviour, IBombInteractable, IPlayerInteractable
 {
     public void OnPlayerInteract()
     {
-        LevelManager.Instance.AddCoin();
-        gameObject.SetActive(false);
+        Interact();
     }
 
     public void OnBombInteract()
     {
-        LevelManager.Instance.AddCoin();
-        gameObject.SetActive(false);
+        Interact();
     }
 
-    
+    void Interact()
+    {
+        LevelManager.Instance.AddCoin();
+        AudioManager.Instance.PlaySFX(SoundType.CoinPickup);
+        RhythmManager.Instance.AddSound(SoundType.CoinPickup);
+        gameObject.SetActive(false);
+    }
 
     // Start is called before the first frame update
     void Start()
