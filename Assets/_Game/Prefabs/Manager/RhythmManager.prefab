@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3445558606140340644}
-  - component: {fileID: 5042275030120975164}
+  - component: {fileID: 4293864078228759535}
   m_Layer: 0
   m_Name: RhythmManager
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5042275030120975164
+--- !u!114 &4293864078228759535
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
