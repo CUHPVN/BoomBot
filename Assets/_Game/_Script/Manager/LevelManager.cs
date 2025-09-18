@@ -5,13 +5,13 @@ using UnityEngine;
 public class LevelManager : Singleton<LevelManager>
 {
     private int coin = 0;
-    void Start()
+    public void Start()
     {
-        
+        LoadLevel();
     }
     public void LoadLevel()
     {
-        RhythmManager.Instance.Clear();
+        CameraMovement.Instance.SetPlayer(FindAnyObjectByType<PlayerController>().gameObject);
     }
     public void AddCoin()
     {
