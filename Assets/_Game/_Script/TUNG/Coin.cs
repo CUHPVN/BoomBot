@@ -18,7 +18,7 @@ public class Coin : MonoBehaviour, IBombInteractable, IPlayerInteractable
     {
         LevelManager.Instance.AddCoin();
         AudioManager.Instance.PlaySFX(SoundType.CoinPickup);
-        RhythmManager.Instance.AddSound(SoundType.CoinPickup);
+        RhythmManager.Instance.AddSound(SoundType.CoinPickup,transform.position);
         gameObject.SetActive(false);
     }
 

@@ -87,7 +87,6 @@ public class Bomb : MonoBehaviour
                 // Chỉ đẩy nếu Player trong bán kính nổ
                 if (dist <= explosionRadius)
                 {
-                    Debug.Log("Boom " + name + " " + col.name);
                     // Giảm lực theo khoảng cách (gần nổ mạnh hơn)
                     float atten = 1f - (dist / Mathf.Max(0.0001f, explosionRadius));
                     colRb.AddForce(dir.normalized * explosionForce * (atten * 0.7f + 0.3f), ForceMode2D.Impulse);
@@ -97,7 +96,7 @@ public class Bomb : MonoBehaviour
         SimplePool.Spawn<VFXPrefab>(PoolType.VFX, transform.position, Quaternion.identity);
         // TODO: spawn hiệu ứng nổ (particle, sound) nếu muốn
         AudioManager.Instance.PlaySFX(SoundType.Explosion);
-        RhythmManager.Instance.AddSound(SoundType.Explosion);
+        RhythmManager.Instance.AddSound(SoundType.Explosion,transform.position);
         ScreenShake.Instance.StartShake();
         Destroy(gameObject);
     }
