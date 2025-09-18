@@ -41,7 +41,6 @@ public class RhythmManager : Singleton<RhythmManager>
         if (soundEvents.Count == 0) yield break;
 
         float startTime = Time.time;
-        int i = 0;
         List<SoundEvent> se=new (soundEvents);
         soundEvents.Clear();
         foreach (var e in se)
