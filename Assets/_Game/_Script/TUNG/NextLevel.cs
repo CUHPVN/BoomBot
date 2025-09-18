@@ -19,12 +19,10 @@ public class NextLevel : MonoBehaviour
             collision.gameObject.SetActive(false);
             thisPlayer = collision.gameObject;
             RhythmManager.Instance.StartPlayQueue();
-
-            Invoke(nameof(Respawn), 10);
         }
     }
 
-    private void Respawn()
+    public void Respawn()
     {
         thisPlayer.SetActive(true);
         thisPlayer.transform.position = startPoint;
