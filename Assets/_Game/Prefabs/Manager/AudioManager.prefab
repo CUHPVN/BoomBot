@@ -306,7 +306,9 @@ MonoBehaviour:
   SFX: {fileID: 7811124105038083981}
   bgmClips: []
   sfxClips:
-  - {fileID: 8300000, guid: 3c4c65cd297915940b09d30874cbebec, type: 3}
+  - {fileID: 8300000, guid: 2c5292ba5cf254919a6b9e2b18e04f49, type: 3}
+  - {fileID: 8300000, guid: 52320e590bf774734a288886eba557ba, type: 3}
   - {fileID: 8300000, guid: 79180f511d89441b9aa23ccae1992fe0, type: 3}
+  - {fileID: 8300000, guid: 3c4c65cd297915940b09d30874cbebec, type: 3}
   bgmVolume: 1
   sfxVolume: 1
