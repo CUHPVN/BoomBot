@@ -4,7 +4,7 @@ public class Rope : MonoBehaviour
     public Transform pivot;
     [SerializeField][Range(-180,180)] private float startAngle = -30f;
     [SerializeField][Range(-180,180)] private float endAngle = 60f;
-    [SerializeField] private float spinSpeed = 50f;
+    [SerializeField][Range(20f,100f)] private float spinSpeed = 50f;
     [SerializeField] private float angleSpined = 999f;
     [SerializeField] private float spinAngle = 0f;
     [SerializeField] private int rounds = 1;
@@ -21,7 +21,6 @@ public class Rope : MonoBehaviour
     void Start()
     {
         cl = GetComponent<CircleCollider2D>();
-        
     }
 
     // Update is called once per frame
