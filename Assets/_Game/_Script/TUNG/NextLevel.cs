@@ -24,6 +24,7 @@ public class NextLevel : MonoBehaviour
 
     private void Respawn()
     {
+        RhythmManager.Instance.StartPlayQueue();
         thisPlayer.SetActive(true);
         thisPlayer.transform.position = startPoint;
     }

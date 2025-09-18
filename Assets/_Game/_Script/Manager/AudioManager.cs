@@ -101,16 +101,10 @@ public class AudioManager : PersistentSingleton<AudioManager>
     }
     public void PlaySFX(SoundType type)
     {
-        if (type == SoundType.Explosion)
-        {
-            SFX.pitch = Random.Range(0.75f, 1f);
+
+            SFX.pitch = Random.Range(0.75f, 1.25f);
             SFX.PlayOneShot(sfxClips[(int)type]);
-        }
-        else
-        {
-            SFX.pitch = 1;
-            SFX.PlayOneShot(sfxClips[(int)type]);
-        }
+        
     }
     
     public void Save(ref SoundSaveData data)

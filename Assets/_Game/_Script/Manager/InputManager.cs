@@ -15,6 +15,7 @@ public class InputManager : MonoBehaviour
     private void Awake()
     {
         cam = Camera.main;
+        Input.multiTouchEnabled = false;
     }
 
     private void Update()
