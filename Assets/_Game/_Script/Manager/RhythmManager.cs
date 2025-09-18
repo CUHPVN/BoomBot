@@ -49,7 +49,9 @@ public class RhythmManager : Singleton<RhythmManager>
         {
             yield return new WaitForSeconds(Mathf.Min(e.time, 0.5f));
             AudioManager.Instance.PlaySFX(e.clip);
-            SimplePool.Spawn<VFXPrefab>(PoolType.VFX,e.pos,Quaternion.identity);
+            VFXPrefab vFXPrefab= SimplePool.Spawn<VFXPrefab>(PoolType.VFX,e.pos,Quaternion.identity);
+            CameraMovement.Instance.SetVFX(vFXPrefab.gameObject);
         }
+        LevelManager.Instance.LoadLevel();
     }
 }
