@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class LevelManager : Singleton<LevelManager>
 {
+    [SerializeField] private GameObject thisPlayer;
+
     private int coin = 0;
     public void Start()
     {
@@ -11,6 +13,7 @@ public class LevelManager : Singleton<LevelManager>
     }
     public void LoadLevel()
     {
+        if(FindAnyObjectByType<PlayerController>()!=null)
         CameraMovement.Instance.SetPlayer(FindAnyObjectByType<PlayerController>().gameObject);
     }
     public void AddCoin()
