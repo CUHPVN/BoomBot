@@ -9,11 +9,9 @@ public class LevelManager : Singleton<LevelManager>
     {
         
     }
-
-    // Update is called once per frame
-    void Update()
+    public void LoadLevel()
     {
-        
+        RhythmManager.Instance.Clear();
     }
     public void AddCoin()
     {
