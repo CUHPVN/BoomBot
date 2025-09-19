@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -8,10 +9,11 @@ public class Bomb : MonoBehaviour
     [SerializeField] private float explosionForce = 20f;   // lực đẩy
     [SerializeField] private float explosionRadius = 5f;   // bán kính nổ
     [SerializeField] private LayerMask layerName;
+    [SerializeField] private float rays = 16;
     bool isExplo = false;
     //[SerializeField] private string wallTag = "Wall";
     //[SerializeField] private string slideFloor = "SlideFloor";
- 
+    
     
     private Rigidbody2D rb;         // RB của chính Boom
     private Rigidbody2D playerRb;   // RB của Player (tìm theo tag)
@@ -51,12 +53,28 @@ public class Bomb : MonoBehaviour
         if (isExplo) return;
         Explode();
     }
-
+    
 
     private void Explode()
     {
         isExplo = true;
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, explosionRadius, layerName);
+        float angleStep = 360 / rays;
+        List<Collider2D> colliders = new List<Collider2D>();
+        for(int i = 0; i < rays; i++)
+        {
+            float angle = angleStep * i;
+            Vector2 dir = new Vector2(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad));
+            RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, dir, explosionRadius, layerName);
+            foreach(RaycastHit2D hit in hits)
+            {
+                //Debug.Log(hit.collider.tag);
+                if (hit.collider.CompareTag("Wall"))
+                    break;
+                if (!colliders.Contains(hit.collider))
+                    colliders.Add(hit.collider);
+            }
+        }
+
         //Debug.Log("BOOOM!!!");
         //int targetLayer = LayerMask.NameToLayer(layerName);
 
