@@ -40,7 +40,6 @@ public class RhythmManager : Singleton<RhythmManager>
     }
     private IEnumerator ReplayCoroutine()
     {
-        if (soundEvents.Count == 0) yield break;
 
         float startTime = Time.time;
         List<SoundEvent> se=new (soundEvents);
@@ -50,8 +49,9 @@ public class RhythmManager : Singleton<RhythmManager>
             yield return new WaitForSeconds(Mathf.Min(e.time, 0.5f));
             AudioManager.Instance.PlaySFX(e.clip);
             VFXPrefab vFXPrefab= SimplePool.Spawn<VFXPrefab>(PoolType.VFX,e.pos,Quaternion.identity);
-            CameraMovement.Instance.SetVFX(vFXPrefab.gameObject);
+            CameraMovement.Instance.SetVFX(vFXPrefab.transform);
         }
-        LevelManager.Instance.LoadLevel();
+        LevelManager.Instance.NextLevel();
+        if (soundEvents.Count == 0) yield break;
     }
 }

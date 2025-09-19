@@ -9,8 +9,6 @@ public class CUHPTest : MonoBehaviour
     public ScreenShake screenShake;
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space)){
-            StartCoroutine(screenShake.Shake());
-        }
+        
     }
 }

@@ -1,39 +1,40 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraMovement : Singleton<CameraMovement>
 {
+    [SerializeField] CinemachineVirtualCamera _virtualCamera;
     private const float playerSpeed = 45f;
     private const float vfxSpeed = 60f;
-    public float speed = 45f;
     private Vector3 offset = new Vector3(0, 0, -10f);
     private Vector3 velocity = Vector3.zero;
-    GameObject player;
+    Transform player;
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
-    public void SetPlayer(GameObject player)
+    public void SetPlayer(Transform player)
     {
-        speed = playerSpeed;
         this.player = player;
+        _virtualCamera.Follow = (player.transform);
+        CameraBound bound =player.GetComponent<PlayerController>().cameraBound;
+        if (bound == null) return;
+        PolygonCollider2D polygonCollider2D = bound.m_PolygonCollider;
+        if (polygonCollider2D == null) return;
+        _virtualCamera.GetComponent<CinemachineConfiner2D>().m_BoundingShape2D = polygonCollider2D;
     }
-    public void SetVFX(GameObject vfx)
+    public void SetVFX(Transform vfx)
     {
-        speed = vfxSpeed;
         this.player = vfx;
+        //_virtualCamera.Follow = (player.transform);
     }
     void Update()
     {
-        Move();
+        //Move();
     }
     void Move()
     {
-        if(player!=null)
-        {
-            Vector3 target = player.transform.position + offset;
-            transform.position = Vector3.SmoothDamp(transform.position, target, ref velocity, speed / 100);
-        }
     }
 }
