@@ -176,3 +176,4 @@ MonoBehaviour:
   layerName:
     serializedVersion: 2
     m_Bits: 128
+  rays: 32

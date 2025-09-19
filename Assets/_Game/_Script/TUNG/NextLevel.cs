@@ -15,7 +15,7 @@ public class NextLevel : MonoBehaviour
     {
         if(collision.CompareTag("Player"))
         {
-            //TO DO
+            //TODO:
             collision.gameObject.SetActive(false);
             thisPlayer = collision.gameObject;
             RhythmManager.Instance.StartPlayQueue();
