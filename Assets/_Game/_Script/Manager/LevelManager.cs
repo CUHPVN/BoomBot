@@ -21,19 +21,31 @@ public class LevelManager : Singleton<LevelManager>
         if (playerController != null)
             playerController.Init();
         CameraMovement.Instance.SetPlayer(playerController.transform);
-
-
     }
     public void NextLevel()
     {
-        Destroy(currentLevel.gameObject);
-        level++;
-        if (level >= levelPrefabs.Count) return;
-        LoadLevel();
+        StartCoroutine(Next());
     }
     public void ReloadLevel()
     {
+        StartCoroutine(Reload());
+    }
+    private IEnumerator Next() 
+    {
+        CameraMovement.Instance.Remove();
+        yield return new WaitForSeconds(1);//anim
         Destroy(currentLevel.gameObject);
+        level++;
+        if (level >= levelPrefabs.Count) yield break;
+        yield return new WaitForSeconds(1);
+        LoadLevel();
+    }
+    public IEnumerator Reload()
+    {
+        CameraMovement.Instance.Remove();
+        yield return new WaitForSeconds(1);//trans
+        Destroy(currentLevel.gameObject);
+        yield return new WaitForSeconds(1);
         LoadLevel();
     }
     private void SpawnLevel()

@@ -28,7 +28,7 @@ public class Shoot : MonoBehaviour
         
         if (_inputManager.inputState == InputManager.InputState.EndClick)
             {
-                Vector2 direction = _inputManager._endPoint - _inputManager._startPoint;
+                Vector2 direction = _inputManager.GetWorldPoint(_inputManager._currentScreenPoint) - _inputManager.GetWorldPoint(_inputManager._startScreenPoint);
             if (direction.magnitude > 0.3f)
             {
                
