@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Trans : MonoBehaviour
+public class Trans :  PersistentSingleton<Trans>
 {
     [SerializeField] private Animator animator;
     private void Start()
