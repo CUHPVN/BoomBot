@@ -57,7 +57,7 @@ public class Elevator : MonoBehaviour,IInteractByButton
     }
     void OnDrawGizmos()
     {
-        Gizmos.DrawLine(transform.position, endPoint);
+        Gizmos.DrawLine(transform.position, transform.position + new Vector3(0, height, 0));
     }
 
     public void ButtonCall()
