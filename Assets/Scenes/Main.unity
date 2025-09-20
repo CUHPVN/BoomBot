@@ -371,7 +371,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3647b3ed5cbcca49bb6e82b1f9f4cee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 4
+  level: 0
   levelPrefabs:
   - level: {fileID: 9222924709170819328, guid: 8ce251a5b08da0a4ea9eec8d5b4f5094, type: 3}
     bombCount: 10
@@ -385,7 +385,9 @@ MonoBehaviour:
     bombCount: 7
   - level: {fileID: 9222924709170819328, guid: d14881e472cae8a469f915a07f7b5626, type: 3}
     bombCount: 10
-  currentLevel: {fileID: 0}
+  - level: {fileID: 0}
+    bombCount: 10
+  currentLevel: {fileID: 4710408356772407540, guid: a4431039e14f61a4fb9a9516bec1aa30, type: 3}
   parent: {fileID: 51037111}
   trans: {fileID: 2000187181}
 --- !u!1 &907327023
