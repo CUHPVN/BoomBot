@@ -6,6 +6,7 @@ public class StartGame : MonoBehaviour
 {
     void Start()
     {
+        Trans.Instance.TransOut();
         UIManager.Instance.OpenUI<CanvasStartGame>();
     }
 
