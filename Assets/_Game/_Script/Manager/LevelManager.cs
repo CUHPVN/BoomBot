@@ -2,24 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-public class Level
-{
-    public Transform level;
-    public int bombCount;
-}
+
 public class LevelManager : Singleton<LevelManager>
 {
     [SerializeField] private int level = 0;
-    [SerializeField] private List<Level> levelPrefabs = new();
+    [SerializeField] private LevelConfig config;
     [SerializeField] private Transform currentLevel;
     [SerializeField] private GameObject parent;
-    [SerializeField] private Trans trans;
     private bool onReload = false;
 
     private int coin = 0;
     public void Awake()
     {
+        config = Resources.Load<LevelConfig>("SO/LevelConfig");
         LoadLevel();
     }
     private void Update()
@@ -47,23 +42,24 @@ public class LevelManager : Singleton<LevelManager>
     {
         if (onReload) return;
         onReload = true;
+        StopAllCoroutines();
         StartCoroutine(Reload());
     }
     private IEnumerator Next() 
     {
         //CameraMovement.Instance.Remove();
-        trans.TransIn();
+        Trans.Instance.TransIn();
         yield return new WaitForSeconds(0.75f);//anim
         Destroy(currentLevel.gameObject);
         level++;
-        if (level >= levelPrefabs.Count) yield break;
+        if (level >=  config.levelPrefabs.Count) yield break;
         yield return new WaitForSeconds(0.5f);
         LoadLevel();
     }
     public IEnumerator Reload()
     {
         //CameraMovement.Instance.Remove();
-        trans.TransIn();
+        Trans.Instance.TransIn();
         yield return new WaitForSeconds(0.75f);//trans
         Destroy(currentLevel.gameObject);
         yield return new WaitForSeconds(0.5f);
@@ -71,9 +67,8 @@ public class LevelManager : Singleton<LevelManager>
     }
     private void SpawnLevel()
     {
-        currentLevel = Instantiate<Transform>(levelPrefabs[level].level,parent.transform);
-        trans.gameObject.SetActive(true);
-        trans.TransOut();
+        currentLevel = Instantiate(config.levelPrefabs[level],parent.transform);
+        Trans.Instance.TransOut();
         Invoke(nameof(TurnOff), 0.5f);
     }
     public void TurnOff()
