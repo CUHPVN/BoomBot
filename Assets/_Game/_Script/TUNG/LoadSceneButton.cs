@@ -18,6 +18,16 @@ public class LoadSceneButton : MonoBehaviour, IInteractByButton
     }
     public void ButtonCall()
     {
+        StartButton();
+    }
+    public void StartButton()
+    {
+        AudioManager.Instance.PlaySFX(SoundType.ButtonClick);
+        Trans.Instance.TransIn();
+        Invoke(nameof(LoadScene), 1f);
+    }
+    public void LoadScene()
+    {
         SceneManager.LoadScene("Start");
     }
 }
