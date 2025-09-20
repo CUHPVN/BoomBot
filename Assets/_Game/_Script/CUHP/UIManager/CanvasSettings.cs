@@ -10,6 +10,7 @@ public class CanvasSettings : UICanvas
     public void Exit()
     {
         Close(0);
+        AudioManager.Instance.PlaySFX(SoundType.ButtonClick);
         Time.timeScale = 1.0f;
     }
     public (float bmg, float sfx) GetVolume()
@@ -18,6 +19,7 @@ public class CanvasSettings : UICanvas
     }
     public void FullScreen()
     {
+        AudioManager.Instance.PlaySFX(SoundType.ButtonClick);
         Screen.fullScreen = !Screen.fullScreen;
     }
     

@@ -12,6 +12,7 @@ public class CanvasStartGame : UICanvas
     }
     public void StartButton()
     {
+        AudioManager.Instance.PlaySFX(SoundType.ButtonClick);
         Trans.Instance.TransIn();
         Invoke(nameof(LoadScene),1f);
     }

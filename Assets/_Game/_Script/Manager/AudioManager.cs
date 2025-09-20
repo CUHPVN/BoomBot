@@ -17,7 +17,7 @@ public class AudioManager : PersistentSingleton<AudioManager>
 
     void Update()
     {
-        //CheckMusic();
+        CheckMusic();
         GetVolume();
         UpdateVolume();
     }

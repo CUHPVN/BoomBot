@@ -14,6 +14,7 @@ public class CanvasNextLevel : UICanvas
     {
         Time.timeScale = 1;
         Close(0);
+        AudioManager.Instance.PlaySFX(SoundType.ButtonClick);
         LevelManager.Instance.NextLevel();
     }
 
