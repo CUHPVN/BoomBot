@@ -514,11 +514,11 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.34858727, y: 0.45032954}
+    - - {x: -0.32664704, y: 0.4091916}
       - {x: -0.4628911, y: -0.46598387}
       - {x: 0.0180974, y: -0.46289134}
       - {x: 0.44124436, y: -0.46289134}
-      - {x: 0.36743927, y: 0.4534607}
+      - {x: 0.36743927, y: 0.41232276}
   m_UseDelaunayMesh: 0
 --- !u!233 &777170503382594791
 HingeJoint2D:
@@ -536,7 +536,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0.5}
-  m_ConnectedAnchor: {x: -4.328, y: -2.396}
+  m_ConnectedAnchor: {x: -4.01, y: -3.06}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
