@@ -372,24 +372,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 0
-  levelPrefabs:
-  - level: {fileID: 9222924709170819328, guid: 8ce251a5b08da0a4ea9eec8d5b4f5094, type: 3}
-    bombCount: 10
-  - level: {fileID: 9222924709170819328, guid: fa4b218c71de4d94db3f9c0b4c96ce6a, type: 3}
-    bombCount: 10
-  - level: {fileID: 9222924709170819328, guid: e9b63e2b4cfd3ba4492ceb77ff52a688, type: 3}
-    bombCount: 10
-  - level: {fileID: 9222924709170819328, guid: 3ee458aa5a18c814cb93da89ce40a40f, type: 3}
-    bombCount: 10
-  - level: {fileID: 9222924709170819328, guid: 009d9d8e3dfa5a94d850eb3ae3a69cdc, type: 3}
-    bombCount: 7
-  - level: {fileID: 9222924709170819328, guid: d14881e472cae8a469f915a07f7b5626, type: 3}
-    bombCount: 10
-  - level: {fileID: 0}
-    bombCount: 10
+  config: {fileID: 0}
   currentLevel: {fileID: 4710408356772407540, guid: a4431039e14f61a4fb9a9516bec1aa30, type: 3}
   parent: {fileID: 51037111}
-  trans: {fileID: 2000187181}
 --- !u!1 &907327023
 GameObject:
   m_ObjectHideFlags: 0
