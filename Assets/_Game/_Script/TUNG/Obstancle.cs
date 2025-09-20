@@ -16,6 +16,8 @@ public class Obstancle : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             collision.gameObject.SetActive(false);
+            AudioManager.Instance.PlaySFX(SoundType.Death);
+            
             LevelManager.Instance.ReloadLevel();
         }
 
