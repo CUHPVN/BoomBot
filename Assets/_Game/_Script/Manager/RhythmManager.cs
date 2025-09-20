@@ -42,6 +42,7 @@ public class RhythmManager : Singleton<RhythmManager>
         Transform newTF= CreateNewTF(pos);
         soundEvents.Add(new SoundEvent(deltaTime, soundType,pos,newTF));
         CameraMovement.Instance.AddNewPos(newTF);
+        newTF.SetParent(transform);
         deltaTime = 0;
     }
     public Transform CreateNewTF(Vector3 pos)

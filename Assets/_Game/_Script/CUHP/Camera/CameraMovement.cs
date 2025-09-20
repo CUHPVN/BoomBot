@@ -42,6 +42,7 @@ public class CameraMovement : Singleton<CameraMovement>
     public void Remove()
     {
         _targetGroup.RemoveMember(player);
+        Debug.Log(player);
     }
     public void AddNewPos(Transform pos)
     {
@@ -58,6 +59,7 @@ public class CameraMovement : Singleton<CameraMovement>
         framingTransposer.m_SoftZoneWidth = 0.5f;
         framingTransposer.m_SoftZoneHeight = 0.5f;
         _virtualCamera.Follow=(_targetGroup.transform);
+        Remove();
     }
     void Update()
     {
