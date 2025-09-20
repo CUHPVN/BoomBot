@@ -153,4 +153,5 @@ public enum SoundType
     CoinPickup = 5,
     ButtonClick = 6,
     Death = 7,
+    Win = 8,
 }

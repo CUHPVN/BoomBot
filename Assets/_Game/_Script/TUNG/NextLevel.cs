@@ -18,6 +18,7 @@ public class NextLevel : MonoBehaviour
             //TODO:
             collision.gameObject.SetActive(false);
             thisPlayer = collision.gameObject;
+            AudioManager.Instance.PlaySFX(SoundType.Win);
             RhythmManager.Instance.StartPlayQueue();
         }
     }
