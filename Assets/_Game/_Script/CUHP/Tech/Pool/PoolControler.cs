@@ -27,4 +27,5 @@ public enum PoolType
     VFX=1,
     Bomb=2,
     SFX=3,
+    VFX2=4,
 }

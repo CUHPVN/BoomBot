@@ -541,6 +541,9 @@ MonoBehaviour:
   - prefab: {fileID: -4364098049884518514, guid: 552e96ca42d7e55439bf52fa0c80df9c, type: 3}
     parent: {fileID: 1952071585}
     amount: 5
+  - prefab: {fileID: 1705325847300631089, guid: dc262df47cd642f4982141a5934ad3d6, type: 3}
+    parent: {fileID: 1952071585}
+    amount: 5
 --- !u!1 &1121147331
 GameObject:
   m_ObjectHideFlags: 0
