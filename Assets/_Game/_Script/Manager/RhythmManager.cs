@@ -50,6 +50,10 @@ public class RhythmManager : Singleton<RhythmManager>
         Transform tf = Instantiate(invisible,pos,Quaternion.identity);
         return tf;
     }
+    public void StopCRT()
+    {
+        StopAllCoroutines();
+    }
     private IEnumerator ReplayCoroutine()
     {
 

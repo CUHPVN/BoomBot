@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class CanvasSettings : UICanvas
 {
-    public void OpenMainMenu()
+    public void Exit()
     {
         Close(0);
-        UIManager.Instance.OpenUI<CanvasMainMenu>();
+        Time.timeScale = 1.0f;
     }
-    public void OpenGamePlay()
+    public void FullScreen()
     {
-        Close(0);
-        UIManager.Instance.OpenUI<CanvasGamePlay>();
+        Screen.fullScreen = !Screen.fullScreen;
     }
+    
 }

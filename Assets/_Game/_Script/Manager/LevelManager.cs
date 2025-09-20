@@ -17,6 +17,11 @@ public class LevelManager : Singleton<LevelManager>
         config = Resources.Load<LevelConfig>("SO/LevelConfig");
         LoadLevel();
     }
+    public void Start()
+    {
+        UIManager.Instance.OpenUI<CanvasGamePlay>();
+
+    }
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.R))
@@ -42,7 +47,7 @@ public class LevelManager : Singleton<LevelManager>
     {
         if (onReload) return;
         onReload = true;
-        StopAllCoroutines();
+        RhythmManager.Instance.StopCRT();
         StartCoroutine(Reload());
     }
     private IEnumerator Next() 
