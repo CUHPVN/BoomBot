@@ -12,10 +12,12 @@ public class CanvasGamePlay : UICanvas
     public void SettingsButton()
     {
         Time.timeScale = 0;
+        AudioManager.Instance.PlaySFX(SoundType.ButtonClick);
         UIManager.Instance.OpenUI<CanvasSettings>();
     }
     public void ReloadButton()
     {
+        AudioManager.Instance.PlaySFX(SoundType.ButtonClick);
         LevelManager.Instance.ReloadLevel();
     }
 }
