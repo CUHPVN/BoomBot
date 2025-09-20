@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1761242712613989556}
   - component: {fileID: 8653686994436215187}
   - component: {fileID: 8443786957962098205}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Elevator_Horizontal
   m_TagString: DontHaveRig
   m_Icon: {fileID: 0}

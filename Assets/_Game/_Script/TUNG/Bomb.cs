@@ -68,7 +68,7 @@ public class Bomb : MonoBehaviour
             foreach(RaycastHit2D hit in hits)
             {
                 //Debug.Log(hit.collider.tag);
-                if (hit.collider.CompareTag("Wall"))
+                if (hit.collider.CompareTag("Wall") || hit.collider.CompareTag("DontHaveRig"))
                     break;
                 if (!colliders.Contains(hit.collider))
                     colliders.Add(hit.collider);
