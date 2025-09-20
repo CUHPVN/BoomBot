@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class AudioManager : PersistentSingleton<AudioManager>
 {
+    private CanvasSettings canvasSettings;
     [SerializeField] private AudioSource BGM;
     [SerializeField] private AudioSource SFX;
     [SerializeField] private AudioClip[] bgmClips;
@@ -17,7 +18,7 @@ public class AudioManager : PersistentSingleton<AudioManager>
     void Update()
     {
         //CheckMusic();
-        //GetVolume();
+        GetVolume();
         UpdateVolume();
     }
     private void FixedUpdate()
@@ -33,55 +34,19 @@ public class AudioManager : PersistentSingleton<AudioManager>
             PlayBGM(ran);
         }
     }
-    //public void GetVolume()
-    //{
-    //    if (mainMenuUIManager != null)
-    //    {
-    //        if (!mainMenuUIManager.GetSetting())
-    //        {
-    //            if (!saved)
-    //            {
-    //                saved = true;
-    //                SaveSystem.Save();
-    //            }
-    //            mainMenuUIManager.SetVomume(bgmVolume, sfxVolume);
-    //        }
-    //        else
-    //        {
-    //            (float bgm, float sfx) = mainMenuUIManager.GetVolume();
-    //            saved = false;
-    //            bgmVolume = bgm;
-    //            sfxVolume = sfx;
-    //        }
-    //    }
-    //    else
-    //    {
-    //        mainMenuUIManager = FindFirstObjectByType<MainMenuUIManager>();
-    //    }
-    //    if (uiManager != null)
-    //    {
-    //        if (!uiManager.GetSetting())
-    //        {
-    //            if (!saved)
-    //            {
-    //                saved = true;
-    //                SaveSystem.Save();
-    //            }
-    //            uiManager.SetVomume(bgmVolume, sfxVolume);
-    //        }
-    //        else
-    //        {
-    //            (float bgm, float sfx) = uiManager.GetVolume();
-    //            saved = false;
-    //            bgmVolume = bgm;
-    //            sfxVolume = sfx;
-    //        }
-    //    }
-    //    else
-    //    {
-    //        uiManager = FindFirstObjectByType<UIManager>();
-    //    }
-    //}
+    public void GetVolume()
+    {
+        if (canvasSettings != null)
+        {
+            (float bgm, float sfx) = canvasSettings.GetVolume();
+            bgmVolume = bgm;
+            sfxVolume = sfx;
+        }
+        else
+        {
+            canvasSettings = FindFirstObjectByType<CanvasSettings>();
+        }
+    }
     public void UpdateVolume()
     {
         if (BGM.volume != bgmVolume)
