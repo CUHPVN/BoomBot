@@ -114,8 +114,8 @@ public class Bomb : MonoBehaviour
         }
         SimplePool.Spawn<VFXPrefab>(PoolType.VFX, transform.position, Quaternion.identity);
         // TODO: spawn hiệu ứng nổ (particle, sound) nếu muốn
-        AudioManager.Instance.PlaySFX(SoundHelper.GetRandomExplosion());
-        RhythmManager.Instance.AddSound(SoundHelper.GetRandomExplosion(),transform.position);
+        AudioManager.Instance.PlaySFX(SoundType.Explosion1);
+        RhythmManager.Instance.AddSound(SoundType.Explosion1,transform.position);
         ScreenShake.Instance.StartShake();
         Destroy(gameObject);
     }
