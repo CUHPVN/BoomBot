@@ -72,7 +72,7 @@ public class Bomb : MonoBehaviour
                     break;
                 if (!colliders.Contains(hit.collider))
                     colliders.Add(hit.collider);
-            }
+            }   
         }
 
         //Debug.Log("BOOOM!!!");
