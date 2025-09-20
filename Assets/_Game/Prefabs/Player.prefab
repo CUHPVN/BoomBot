@@ -328,7 +328,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.01, y: -3.56, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 7501989134505544310}
   - {fileID: 3354214852931577790}
@@ -376,7 +376,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: -251775347, guid: 246ea2caa437e824c93826b0ca868947, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -426,6 +426,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4ec2c26bf67d054d84ea17720db1b3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraBound: {fileID: 0}
   inputManager: {fileID: 0}
   ropeSwing: {fileID: 721970742552944842}
 --- !u!114 &7457071859815124537
@@ -505,7 +506,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 0.8577778, y: 0.935}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -513,10 +514,11 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.30850863, y: 0.541034}
-      - {x: -0.5, y: -0.5}
-      - {x: 0.5, y: -0.5}
-      - {x: 0.36322045, y: 0.55471206}
+    - - {x: -0.34858727, y: 0.45032954}
+      - {x: -0.4628911, y: -0.46598387}
+      - {x: 0.0180974, y: -0.46289134}
+      - {x: 0.44124436, y: -0.46289134}
+      - {x: 0.36743927, y: 0.4534607}
   m_UseDelaunayMesh: 0
 --- !u!233 &777170503382594791
 HingeJoint2D:
@@ -534,7 +536,7 @@ HingeJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0.5}
-  m_ConnectedAnchor: {x: -4.01, y: -3.06}
+  m_ConnectedAnchor: {x: -4.328, y: -2.396}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
