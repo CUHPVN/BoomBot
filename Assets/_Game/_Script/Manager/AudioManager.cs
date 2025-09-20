@@ -102,7 +102,7 @@ public class AudioManager : PersistentSingleton<AudioManager>
     public void PlaySFX(SoundType type)
     {
 
-            SFX.pitch = Random.Range(0.75f, 1.25f);
+            SFX.pitch = Random.Range(0.5f, 1.5f);
             SFX.PlayOneShot(sfxClips[(int)type]);
         
     }
