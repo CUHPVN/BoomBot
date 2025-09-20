@@ -26,6 +26,16 @@ public class RhythmManager : Singleton<RhythmManager>
     {
         StartCoroutine(ReplayCoroutine());
     }
+    public float CheckTime()
+    {
+        float tmp = 0;
+        List<SoundEvent> se = new(soundEvents);
+        foreach (var e in se)
+        {
+            tmp += e.time;
+        }
+        return tmp;
+    }
     private void Update()
     {
         if(soundEvents.Count > 0)
@@ -57,7 +67,6 @@ public class RhythmManager : Singleton<RhythmManager>
     private IEnumerator ReplayCoroutine()
     {
 
-        float startTime = Time.time;
         List<SoundEvent> se=new (soundEvents);
         soundEvents.Clear();
         CameraMovement.Instance.StartReplay();
@@ -70,7 +79,6 @@ public class RhythmManager : Singleton<RhythmManager>
             Destroy(e.tran.gameObject);
             //CameraMovement.Instance.SetVFX(vFXPrefab.transform);
         }
-        LevelManager.Instance.NextLevel();
         if (soundEvents.Count == 0) yield break;
     }
 }

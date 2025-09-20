@@ -33,7 +33,8 @@ public class Shoot : MonoBehaviour
             {
                
                     Bomb boom = Instantiate(bulletPrefab, shootPoint.position, Quaternion.identity);
-                    // Bắn boom đi
+                // Bắn boom đi
+                    LevelManager.Instance.AddBomb();
                     boom.SetPlayerRB(playerRb);
                     boom.SetPlayerTF(playerTf);
                     Rigidbody2D boomRb = boom.GetBoomRb();

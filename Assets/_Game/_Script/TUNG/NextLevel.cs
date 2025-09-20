@@ -18,10 +18,17 @@ public class NextLevel : MonoBehaviour
             //TODO:
             collision.gameObject.SetActive(false);
             thisPlayer = collision.gameObject;
+            float time = RhythmManager.Instance.CheckTime();
             RhythmManager.Instance.StartPlayQueue();
+            Invoke(nameof(OpenPanel), Mathf.Min(time , 5f));
         }
     }
 
+    public void OpenPanel()
+    {
+        Time.timeScale = 0;
+        UIManager.Instance.OpenUI<CanvasNextLevel>();
+    }
     public void Respawn()
     {
         thisPlayer.SetActive(true);
