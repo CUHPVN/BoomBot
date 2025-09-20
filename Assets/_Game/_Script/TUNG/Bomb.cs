@@ -65,6 +65,7 @@ public class Bomb : MonoBehaviour
             float angle = angleStep * i;
             Vector2 dir = new Vector2(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad));
             RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, dir, explosionRadius, layerName);
+            Debug.DrawRay(transform.position, dir*explosionRadius);
             foreach(RaycastHit2D hit in hits)
             {
                 //Debug.Log(hit.collider.tag);
