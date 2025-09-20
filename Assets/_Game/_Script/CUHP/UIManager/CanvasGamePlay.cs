@@ -6,13 +6,12 @@ using UnityEngine.SceneManagement;
 
 public class CanvasGamePlay : UICanvas
 {
-    
     private void Update()
     {
     }
     public void SettingsButton()
     {
-        Close(0);
+        Time.timeScale = 0;
         UIManager.Instance.OpenUI<CanvasSettings>();
     }
     public void ReloadButton()
