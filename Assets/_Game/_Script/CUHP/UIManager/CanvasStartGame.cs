@@ -8,13 +8,15 @@ public class CanvasStartGame : UICanvas
 {
     public void SettingsButton()
     {
+        AudioManager.Instance.PlaySFX(SoundType.ButtonClick);
         UIManager.Instance.OpenUI<CanvasSettings>();
     }
+    
     public void StartButton()
     {
         AudioManager.Instance.PlaySFX(SoundType.ButtonClick);
         Trans.Instance.TransIn();
-        Invoke(nameof(LoadScene),1f);
+        Invoke(nameof(LoadScene), 1f);
     }
     public void LoadScene()
     {

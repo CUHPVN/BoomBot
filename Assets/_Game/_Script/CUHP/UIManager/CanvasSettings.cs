@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class CanvasSettings : UICanvas
 {
-    [SerializeField] private Slider bmgVolume;
+    [SerializeField] private Slider bgmVolume;
     [SerializeField] private Slider sfxVolume;
     public void Exit()
     {
@@ -13,10 +13,15 @@ public class CanvasSettings : UICanvas
         AudioManager.Instance.PlaySFX(SoundType.ButtonClick);
         Time.timeScale = 1.0f;
     }
-    public (float bmg, float sfx) GetVolume()
+    public void OnEnable()
     {
-        return (bmgVolume.value, sfxVolume.value);
+        (bgmVolume.value,sfxVolume.value)= AudioManager.Instance.GetAllVolume();
     }
+    public (float bgm, float sfx) GetVolume()
+    {
+        return (bgmVolume.value, sfxVolume.value);
+    }
+    
     public void FullScreen()
     {
         AudioManager.Instance.PlaySFX(SoundType.ButtonClick);

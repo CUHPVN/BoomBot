@@ -10,10 +10,8 @@ public class AudioManager : PersistentSingleton<AudioManager>
     [SerializeField] private AudioClip[] sfxClips;
     [SerializeField, Range(0, 1)] private float bgmVolume = 0.5f;
     [SerializeField, Range(0, 1)] private float sfxVolume = 0.5f;
-    void Start()
-    {
 
-    }
+    
 
     void Update()
     {
@@ -24,6 +22,10 @@ public class AudioManager : PersistentSingleton<AudioManager>
     private void FixedUpdate()
     {
 
+    }
+    public (float a,float b) GetAllVolume()
+    {
+        return (bgmVolume, sfxVolume);
     }
     private void CheckMusic()
     {
@@ -119,4 +121,5 @@ public enum SoundType
     ButtonClick = 6,
     Death = 7,
     Win = 8,
+    Tab =9,
 }

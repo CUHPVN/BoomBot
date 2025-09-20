@@ -510,7 +510,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDestroyOnClose: 0
-  bmgVolume: {fileID: 5001408678463987881}
+  bgmVolume: {fileID: 5001408678463987881}
   sfxVolume: {fileID: 6537517273477109367}
 --- !u!1 &2757606323819431687
 GameObject:
