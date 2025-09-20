@@ -55,9 +55,9 @@ public class Elevator : MonoBehaviour,IInteractByButton
         if (moved <= 0f) dir = 1;        // đi lên
         else if (moved >= height) dir = -1; // đi xuống
     }
-    void OnDrawGizmos()
-    {
-        Gizmos.DrawLine(transform.position, transform.position + new Vector3(0, height, 0));
+    private void OnDrawGizmos() {
+        
+        Gizmos.DrawLine(transform.position, transform.position + new Vector3(0,height,0));
     }
 
     public void ButtonCall()
