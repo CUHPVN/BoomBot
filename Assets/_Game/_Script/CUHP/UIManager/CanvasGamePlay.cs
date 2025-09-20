@@ -6,24 +6,17 @@ using UnityEngine.SceneManagement;
 
 public class CanvasGamePlay : UICanvas
 {
-    [SerializeField] private TMP_Text fps;
-    private float fpsIndex;
-    public void AddPoint()
-    {
-        fpsIndex = 1f/Time.deltaTime;
-        fps.text = ((int)fpsIndex).ToString();     
-    }
+    
     private void Update()
     {
-        AddPoint();
     }
     public void SettingsButton()
     {
         Close(0);
         UIManager.Instance.OpenUI<CanvasSettings>();
     }
-    public void ReloadSceneButton()
+    public void ReloadButton()
     {
-        SceneManager.LoadScene("Game");
+        LevelManager.Instance.ReloadLevel();
     }
 }
