@@ -9,6 +9,7 @@ public class LevelManager : Singleton<LevelManager>
     [SerializeField] private LevelConfig config;
     [SerializeField] private Transform currentLevel;
     [SerializeField] private GameObject parent;
+    [SerializeField] private int BombUse = 0;
     private bool onReload = false;
 
     private int coin = 0;
@@ -24,8 +25,9 @@ public class LevelManager : Singleton<LevelManager>
     }
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.R))
         {
+            if(Time.timeScale==1)
             ReloadLevel();
         }
     }
@@ -41,6 +43,7 @@ public class LevelManager : Singleton<LevelManager>
     {
         if (onReload) return;
         onReload = true;
+        RhythmManager.Instance.StopCRT();
         StartCoroutine(Next());
     }
     public void ReloadLevel()
@@ -72,6 +75,7 @@ public class LevelManager : Singleton<LevelManager>
     }
     private void SpawnLevel()
     {
+        BombUse = 0;
         currentLevel = Instantiate(config.levelPrefabs[level],parent.transform);
         Trans.Instance.TransOut();
         Invoke(nameof(TurnOff), 0.5f);
@@ -80,10 +84,17 @@ public class LevelManager : Singleton<LevelManager>
     {
         onReload = false;
     }
+    public void AddBomb()
+    {
+        BombUse++;
+    }
+    public int GetBomb()
+    {
+        return BombUse;
+    }
     public void AddCoin()
     {
         coin++;
-        Debug.Log("Coin : " + coin);
     }
 
 }
