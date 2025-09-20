@@ -7,8 +7,11 @@ using UnityEngine;
 public class InputManager : MonoBehaviour
 {
     public Vector2 _startPoint;
+    public Vector2 _startScreenPoint;
+
     public Vector2 _endPoint;
     public Vector2 _currentPoint;
+    public Vector2 _currentScreenPoint;
     public InputState inputState = InputState.None;
     private Camera cam;
     
@@ -34,14 +37,23 @@ public class InputManager : MonoBehaviour
     void SetPoint()
     {
         if (inputState == InputState.StartClick)
+        {
+            _startScreenPoint = Input.mousePosition;
             _startPoint = cam.ScreenToWorldPoint(Input.mousePosition);
+        }
         if(inputState == InputState.OnClick)
+        {
+            _currentScreenPoint = Input.mousePosition;
             _currentPoint = cam.ScreenToWorldPoint(Input.mousePosition);
+        }
         if(inputState == InputState.EndClick)
             _endPoint = cam.ScreenToWorldPoint(Input.mousePosition);
     }
     public float GetDistance() => Vector2.Distance(_startPoint, _currentPoint);
-
+    public Vector2 GetWorldPoint(Vector2 vector)
+    {
+        return cam.ScreenToWorldPoint(vector);
+    }
     public enum InputState
     {
         None = 0, // Không Ấn

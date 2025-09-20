@@ -26,10 +26,13 @@ public class LinerShoot : MonoBehaviour
     {
         if (_inputManager.inputState == InputManager.InputState.OnClick)
         {
-            if (_inputManager.GetDistance() > 0.1f)
+            Vector2 currentPoint = _inputManager.GetWorldPoint(_inputManager._currentScreenPoint);
+            Vector2 startPoint = _inputManager.GetWorldPoint(_inputManager._startScreenPoint);
+
+            if (Vector2.Distance(currentPoint, startPoint) > 0.1f)
             {
                 if(!Linears.gameObject.activeSelf) Linears.gameObject.SetActive(true);  
-                RotateToDirection(_inputManager._currentPoint - _inputManager._startPoint);
+                RotateToDirection(currentPoint - startPoint);
                 
             }
         }

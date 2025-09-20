@@ -28,15 +28,16 @@ public class CreateLine : MonoBehaviour
     {
         if (_inputManager.inputState == InputManager.InputState.OnClick)
         {
-            if (_inputManager.GetDistance() > 0.1f)
+                Vector2 currentPoint = _inputManager.GetWorldPoint(_inputManager._currentScreenPoint);
+                Vector2 startPoint = _inputManager.GetWorldPoint(_inputManager._startScreenPoint);
+            if (Vector2.Distance(currentPoint,startPoint) > 0.1f)
             {
                 if(!_lineRenderer.gameObject.activeSelf) _lineRenderer.gameObject.SetActive(true);
-                Vector2 currentPoint = _inputManager._currentPoint;
-                if (_inputManager.GetDistance() > MaxForce)
+                if (Vector2.Distance(currentPoint,startPoint) > MaxForce)
                 {
-                    currentPoint = (currentPoint-_inputManager._startPoint).normalized * MaxForce + _inputManager._startPoint;
+                    currentPoint = (currentPoint- startPoint).normalized * MaxForce + startPoint;
                 }
-                _lineRenderer.SetPosition(0, _inputManager._startPoint);
+                _lineRenderer.SetPosition(0, startPoint);
                 _lineRenderer.SetPosition(1, currentPoint);
             }
         }

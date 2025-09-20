@@ -6,11 +6,13 @@ using UnityEngine.UIElements;
 
 public class PlayerController : MonoBehaviour
 {
+    public CameraBound cameraBound;
     public InputManager inputManager;
     public RopeSwing ropeSwing;
-    void Awake()
+    public void Init()
     {
         inputManager = FindFirstObjectByType<InputManager>();
+        cameraBound = FindFirstObjectByType<CameraBound>();
     }
 
 
