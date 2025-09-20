@@ -60,7 +60,17 @@ public class Bomb : MonoBehaviour
         isExplo = true;
         float angleStep = 360 / rays;
         List<Collider2D> colliders = new List<Collider2D>();
-        for(int i = 0; i < rays; i++)
+
+        Collider2D[] circleHits = Physics2D.OverlapCircleAll(transform.position, explosionRadius, layerName);
+        foreach (Collider2D hit in circleHits)
+        {
+            if (hit.CompareTag("Player") && !colliders.Contains(hit))
+            {
+                colliders.Add(hit);
+            }
+        }
+
+        for (int i = 0; i < rays; i++)
         {
             float angle = angleStep * i;
             Vector2 dir = new Vector2(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad));
