@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class Coin : MonoBehaviour, IBombInteractable, IPlayerInteractable
 {
+    [Header("Floating Effect")]
+    [SerializeField] private float floatAmplitude = 0.25f; // biên độ dao động (cao bao nhiêu)
+    [SerializeField] private float floatFrequency = 2f;   // tốc độ dao động
+
+    private Vector3 startPos;
+
     public void OnPlayerInteract()
     {
         Interact();
@@ -18,21 +24,19 @@ public class Coin : MonoBehaviour, IBombInteractable, IPlayerInteractable
     {
         LevelManager.Instance.AddCoin();
         AudioManager.Instance.PlaySFX(SoundType.CoinPickup);
-        RhythmManager.Instance.AddSound(SoundType.CoinPickup,transform.position);
+        RhythmManager.Instance.AddSound(SoundType.CoinPickup, transform.position);
         gameObject.SetActive(false);
     }
 
-    // Start is called before the first frame update
     void Start()
     {
-        
+        startPos = transform.position; // lưu vị trí gốc
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        // hiệu ứng trôi nổi
+        float offsetY = Mathf.Sin(Time.time * floatFrequency) * floatAmplitude;
+        transform.position = startPos + new Vector3(0, offsetY, 0);
     }
-
-    
 }
