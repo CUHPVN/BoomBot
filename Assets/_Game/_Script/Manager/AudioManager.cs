@@ -133,9 +133,24 @@ public struct SoundSaveData
     public float bgmVolume;
     public float sfxVolume;
 }
+public static class SoundHelper
+{
+    public static SoundType GetRandomExplosion()
+    {
+        // Random.Range(min, max) với int: min inclusive, max exclusive
+        int rand = Random.Range(0, 5); // 0 → 4
+        return (SoundType)rand;
+    }
+}
+
 public enum SoundType
 {
-    Explosion = 0,
-    CoinPickup = 1,
-    ButtonClick = 2,
+    Explosion1 = 0,
+    Explosion2 = 1,
+    Explosion3 = 2,
+    Explosion4 = 3,
+    Explosion5 = 4,
+    CoinPickup = 5,
+    ButtonClick = 6,
+    Death = 7,
 }

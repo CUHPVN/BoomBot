@@ -304,11 +304,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BGM: {fileID: 1485739166369351211}
   SFX: {fileID: 7811124105038083981}
-  bgmClips: []
+  bgmClips:
+  - {fileID: 8300000, guid: aa30146c7098fb0499d3ba41b284d6fa, type: 3}
   sfxClips:
   - {fileID: 8300000, guid: 2c5292ba5cf254919a6b9e2b18e04f49, type: 3}
   - {fileID: 8300000, guid: 52320e590bf774734a288886eba557ba, type: 3}
   - {fileID: 8300000, guid: 79180f511d89441b9aa23ccae1992fe0, type: 3}
   - {fileID: 8300000, guid: 3c4c65cd297915940b09d30874cbebec, type: 3}
+  - {fileID: 8300000, guid: 7e9ee6dc04a5d40d1a5dfc4beb9865e7, type: 3}
+  - {fileID: 8300000, guid: 0c008ee3ee72a4362a35be25fa5de043, type: 3}
+  - {fileID: 8300000, guid: ffb159a21c8a04135a5616979c828fab, type: 3}
+  - {fileID: 8300000, guid: b9eff218e132a4e76be78840eca96fb2, type: 3}
   bgmVolume: 1
   sfxVolume: 1
